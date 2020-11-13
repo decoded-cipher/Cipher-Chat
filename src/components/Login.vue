@@ -3,12 +3,15 @@
     <h2 class="pt-5">Welcome to Cipher Chat</h2>
     <form class="detail-box mt-5">
       <div class="form-group my-5">
-        <h4>Signup to Chat</h4>
-        <input type="text" class="form-control my-4" placeholder="Enter your name..." />
-        <input type="text" class="form-control" placeholder="Enter your email..." />
+        <h4>Login to Chat</h4>
+        <input type="text" class="form-control mt-4" placeholder="Enter your email..." />
         <input type="password" class="form-control my-4" placeholder="Enter your password..." />
 
-        <button style="font-weight: 600" type="button" class="btn btn-primary">Signup</button>
+        <router-link :to="{ path: 'signup' }">
+          <h6 class="mb-3" style="font-weight: 600">Create an account</h6>
+        </router-link>
+
+        <button style="font-weight: 600" type="button" class="btn btn-primary">Login</button>
       </div>
     </form>
   </div>
