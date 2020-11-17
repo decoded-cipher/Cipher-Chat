@@ -77,8 +77,15 @@
                                 })
 
                             })
-                            .catch(err => console.log(err));
-                    })
+                    }).catch(err => {
+                        console.log(err)
+                        if (err.code == 'auth/weak-password') {
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'Weak Password! Password should be at least 6 characters'
+                            })
+                        }
+                    });
             }
         }
     }
