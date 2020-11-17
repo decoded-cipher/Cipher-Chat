@@ -1,4 +1,6 @@
-import * as firebase from 'firebase'
+import firebase from 'firebase'
+require('firebase/firestore')
+require('firebase/storage')
 
 var firebaseConfig = {
     apiKey: "AIzaSyCsTE_WRa12T7OYj6FwIPHj5cp59LZZQvQ",
@@ -9,6 +11,8 @@ var firebaseConfig = {
     messagingSenderId: "846146495611",
     appId: "1:846146495611:web:59f3201083bf48b8f1aede"
 };
-firebase.initializeApp(firebaseConfig);
 
-export default firebase
+var fb =  firebase.initializeApp(firebaseConfig)
+var db = firebase.firestore()
+
+export { fb, db }
