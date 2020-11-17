@@ -74,7 +74,9 @@
     },
     
     created() {
-      
+      if (localStorage.getItem('id')) {
+        this.$router.push('/chat')
+      }
     }
   }
 </script>
