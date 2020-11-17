@@ -7,7 +7,7 @@
 
                 <input type="text" v-model="name" class="form-control my-4" placeholder="Enter your name..." />
                 <input type="text" v-model="email" class="form-control" placeholder="Enter your email..." />
-                <input type="password" v-model="password" class="form-control my-4"
+                <input type="password" v-model="password" v-on:keyup.enter="signup" class="form-control my-4"
                     placeholder="Enter your password..." />
 
                 <router-link :to="{ path: '/' }">
@@ -24,7 +24,6 @@
 
 <script>
     import Swal from 'sweetalert2'
-
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -51,24 +50,25 @@
                 fb.auth().createUserWithEmailAndPassword(this.email, this.password)
                     .then(async (user) => {
                         console.log(user.user.uid);
-                        await db.collection("users").doc(user.user.uid).set({
+                        await db.collection("users").add({
                                 name: this.name,
-                                // id: user.user.id,
+                                id: user.user.uid,
                                 email: this.email,
                                 // password: this.password,
                                 description: '',
                                 URL: ''
                             })
-                            .then(() => {
+                            .then((ref) => {
                                 console.log("Document successfully written!");
+                                // console.log(ref);
 
-                                // localStorage.setItem("id", user.user.uid);
-                                // localStorage.setItem("name", this.name);
-                                // localStorage.setItem("email", this.email);
-                                // // localStorage.setItem("password", this.password);
-                                // localStorage.setItem("photoURL", "");
-                                // localStorage.setItem("description", "");
-                                // // localStorage.setItem("FirebaseDocumentId", ref.id);
+                                localStorage.setItem("id", user.user.uid);
+                                localStorage.setItem("name", this.name);
+                                localStorage.setItem("email", this.email);
+                                // localStorage.setItem("password", this.password);
+                                localStorage.setItem("photoURL", "");
+                                localStorage.setItem("description", "");
+                                localStorage.setItem("FirebaseDocumentId", ref.id);
 
                                 this.$router.push('/chat')
                                 Toast.fire({

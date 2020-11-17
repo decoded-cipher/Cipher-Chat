@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Login from './components/Login.vue'
 import SignUp from './components/SignUp.vue'
 import Chat from './components/Chat.vue'
+import Profile from './components/Profile.vue'
 
 Vue.use(VueRouter);
 
@@ -22,6 +23,11 @@ const router = new VueRouter({
             path: '/chat',
             name: 'chat',
             component: Chat
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile
         }
     ],
     mode: 'history'
